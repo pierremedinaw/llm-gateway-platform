@@ -1,0 +1,11 @@
+services:
+  gateway:
+    build: .
+    env_file:
+      - .env
+    ports:
+      # Exponer solo en localhost hasta configurar HTTPS y proxy reverso.
+      - "127.0.0.1:8000:8000"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
